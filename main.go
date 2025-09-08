@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"log/slog"
 	"net/http"
 
@@ -19,7 +20,10 @@ func main() {
 
 	// Routes
 	e.GET("/students", getStudents)
-	e.GET("/dogs", getDogs)
+	e.POST("/students", createStudent)
+	e.GET("/student/:id", getStudent)
+	e.PUT("/student/:id", updateStudent)
+	e.DELETE("student/id", deleteStudent)
 
 	// Start server
 	if err := e.Start(":8080"); err != nil && !errors.Is(err, http.ErrServerClosed) {
@@ -34,4 +38,24 @@ func getStudents(c echo.Context) error {
 
 func getDogs(c echo.Context) error {
 	return c.String(http.StatusOK, "List of all dogs")
+}
+
+func createStudent(c echo.Context) error {
+	return c.String(http.StatusOK, "Create student")
+}
+
+func getStudent(c echo.Context) error {
+	id := c.Param("id")
+	getStud := fmt.Sprintf("Get %s student", id)
+	return c.String(http.StatusOK, getStud)
+}
+func updateStudent(c echo.Context) error {
+	id := c.Param("id")
+	updateStud := fmt.Sprintf("Update %s student", id)
+	return c.String(http.StatusOK, updateStud)
+}
+func deleteStudent(c echo.Context) error {
+	id := c.Param("id")
+	deleteStud := fmt.Sprintf("Delete %s student", id)
+	return c.String(http.StatusOK, deleteStud)
 }
