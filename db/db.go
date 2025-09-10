@@ -28,7 +28,7 @@ func Init() *gorm.DB {
 	return db
 }
 
-func AddStudent(student Student) {
+func AddStudent(student Student) error {
 	db := Init()
 
 	// result := db.Create(&student)
@@ -37,9 +37,10 @@ func AddStudent(student Student) {
 	// }
 
 	if result := db.Create(&student); result.Error != nil {
-		fmt.Println("Error to create student")
+		return result.Error
 	}
 
 	fmt.Println("Create student")
+	return nil
 
 }
