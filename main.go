@@ -6,6 +6,8 @@ import (
 	"log/slog"
 	"net/http"
 
+	"github.com/BellaMez/api-students/db"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -36,11 +38,12 @@ func getStudents(c echo.Context) error {
 	return c.String(http.StatusOK, "List of all students")
 }
 
-func getDogs(c echo.Context) error {
-	return c.String(http.StatusOK, "List of all dogs")
-}
-
 func createStudent(c echo.Context) error {
+	student := db.Student{}
+	if err := c.Bind(&student); err != nil {
+		return err
+	}
+	db.AddStudent(student)
 	return c.String(http.StatusOK, "Create student")
 }
 

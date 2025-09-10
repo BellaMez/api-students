@@ -9,10 +9,10 @@ Routes:
 - DELETE /students/:id - Delete students
 
 Struct Students:
-- Name
-- CPF
-- Email
-- Age
-- Active
+- Name (string)
+- CPF (int)
+- Email (string)
+- Age (int)
+- Active (bool)
 
 
