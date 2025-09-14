@@ -4,6 +4,7 @@ go 1.23.5
 
 require (
 	github.com/labstack/echo/v4 v4.13.4
+	github.com/rs/zerolog v1.34.0
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.30.5
 )
