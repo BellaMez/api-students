@@ -22,7 +22,7 @@ type Student struct {
 func Init() *gorm.DB {
 	db, err := gorm.Open(sqlite.Open("student.db"), &gorm.Config{})
 	if err != nil {
-		log.Fatal().Err(err).Msgf("Failed to initialize SQLite: %s", err.Error())
+
 	}
 
 	db.AutoMigrate(&Student{})
