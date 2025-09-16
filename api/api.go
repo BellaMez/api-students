@@ -33,7 +33,7 @@ func (api *API) Configureoutes() {
 	api.Echo.POST("/students", api.createStudent)
 	api.Echo.GET("/student/:id", api.getStudent)
 	api.Echo.PUT("/student/:id", api.updateStudent)
-	api.Echo.DELETE("student/id", api.deleteStudent)
+	api.Echo.DELETE("/student/:id", api.deleteStudent)
 }
 
 func (api *API) Start() error {
