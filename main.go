@@ -8,7 +8,7 @@ import (
 func main() {
 	server := api.NewServer()
 
-	server.Configureoutes()
+	server.Configureroutes()
 	server.Start()
 
 	if err := server.Start(); err != nil {

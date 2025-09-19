@@ -27,7 +27,7 @@ func NewServer() *API {
 
 }
 
-func (api *API) Configureoutes() {
+func (api *API) Configureroutes() {
 
 	api.Echo.GET("/students", api.getStudents)
 	api.Echo.POST("/students", api.createStudent)
